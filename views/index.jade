@@ -1,0 +1,12 @@
+html
+  head
+    title= title
+  body
+    h1= message
+    ul
+    each d in data
+       li
+         = d.retweet_count+':'+d.favorite_count+":"+d.text
+         br
+         != d.source
+       
