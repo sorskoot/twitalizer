@@ -8,5 +8,13 @@ html
        li
          = d.retweet_count+':'+d.favorite_count+":"+d.text
          br
-         != d.source
-       
+         = d.created_at
+         br
+         = d.user.screen_name
+         - var url ='https://twitter.com/'+d.user.screen_name+'/status/'+d.id
+         a(href=url) link
+         if d.entities.urls
+           br
+           each u in d.entities.urls
+             a(href= u.expanded_url, target='_blank' ) #{u.expanded_url}
+             br

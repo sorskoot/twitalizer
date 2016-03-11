@@ -1,7 +1,7 @@
 "use strict";
-var Twit = require('twit');
+let Twit = require('twit');
 
-var T = new Twit({
+let T = new Twit({
     consumer_key: 'xcx1DsvbZem5zxWTmF38w4vPV',
     consumer_secret: 'Snf0hzMRoSxYjiXatGL8eooQq5ZoJZwnDpfg2EepB04SB7psdq',
     access_token: '705341471981969409-suPnG1NRkxX7fDwBshUu4sKvLfUCqsR',
@@ -9,9 +9,10 @@ var T = new Twit({
     timeout_ms: 60 * 1000,
     // optional HTTP request timeout to apply to all requests.
 });
+let screen_name = 'immersivetech_';
 
-var express = require('express');
-var app = express();
+let express = require('express');
+let app = express();
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res) {
