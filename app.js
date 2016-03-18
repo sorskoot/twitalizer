@@ -16,11 +16,6 @@ let app = express();
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res) {
-    //
-    //  search twitter for all tweets containing the word 'banana' since July 11, 2011
-    //
-
-
     T.get('statuses/user_timeline', { screen_name: 'immersivetech_', count: 100 }, function(err, data, response) {
         let filteredData = data.filter(d => (new Date(d.created_at) - new Date()) > -604800000);
         let orderedData = filteredData.sort((a, b) => b.retweet_count - a.retweet_count);
