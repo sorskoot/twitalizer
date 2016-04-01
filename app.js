@@ -22,7 +22,10 @@ app.get('/', function(req, res) {
 
 
     T.get('statuses/user_timeline', { screen_name: 'immersivetech_', count: 100 }, function(err, data, response) {
-        let orderedData = data.sort((a, b) => b.retweet_count - a.retweet_count);
+        let filteredData = data.filter(function(a){
+              return (new Date(a.created_at) - new Date("03-25-2016"))>0;
+        });
+        let orderedData = filteredData.sort((a, b) => b.retweet_count - a.retweet_count);
         res.render('index', { title: 'Hey', message: 'Hello there!', data: orderedData });
         //res.send(data);
     })

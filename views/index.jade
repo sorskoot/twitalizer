@@ -5,9 +5,10 @@ html
     h1= message
     ul
     each d in data
-       li
-         = d.retweet_count+':'+d.favorite_count+":"+d.text
+       li         
+         h3= d.text
          br
+         = d.retweet_count+':'+d.favorite_count+":"
          = d.created_at
          br
          = d.user.screen_name
@@ -18,3 +19,4 @@ html
            each u in d.entities.urls
              a(href= u.expanded_url, target='_blank' ) #{u.expanded_url}
              br
+         hr
