@@ -16,8 +16,10 @@ let app = express();
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res) {
-    T.get('statuses/user_timeline', { screen_name: 'immersivetech_', count: 100 }, function(err, data, response) {
-        let filteredData = data.filter(d => (new Date(d.created_at) - new Date()) > -604800000);
+    T.get('statuses/user_timeline', { screen_name: 'immersivetech_', count: 200 }, function(err, data, response) {
+        let filteredData = data.filter(function(a){
+              return (new Date(a.created_at) - new Date("Fri Apr 29 13:50:00 +0000 2016"))>0;
+        });
         let orderedData = filteredData.sort((a, b) => b.retweet_count - a.retweet_count);
         res.render('index', { title: 'Hey', message: 'Hello there!', data: orderedData });
         //res.send(data);
